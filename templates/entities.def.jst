@@ -1,0 +1,12 @@
+{{##def.switch_:e:
+    <label class="switch" for="{{=e.id}}">
+        <input type="checkbox" id="{{=e.id}}" {{? e.state}}checked{{?}} onclick="onSwitchToggle(this)">
+        <div class="slider"></div>
+    </label>
+#}}
+
+{{##def.binary_sensor:e:
+    <div id="{{=e.id}}" class="binary-sensor{{? e.state}} checked{{?}}"></div>
+#}}
+
+

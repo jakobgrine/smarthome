@@ -1,0 +1,28 @@
+{
+    "0": {
+        "state_pin": 23,
+        "action_pin": 5
+    },
+    "1": {
+        "state_pin": 24,
+        "action_pin": 6
+    },
+    "2": {
+        "state_pin": 25,
+        "action_pin": 13
+    },
+    "3": {
+        "state_pin": 10,
+        "action_pin": 16
+    },
+    "4": {
+        "state_pin": 9,
+        "action_pin": 19
+    },
+    "5": {
+        "state_pin": 8
+    },
+    "6": {
+        "state_pin": 11
+    }
+}

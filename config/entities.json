@@ -1,0 +1,37 @@
+{
+    "0": {
+        "id": "0",
+        "type": "switch",
+        "name": "Schlafzimmer"
+    },
+    "1": {
+        "id": "1",
+        "type": "switch",
+        "name": "Wohnzimmer"
+    },
+    "2": {
+        "id": "2",
+        "type": "switch",
+        "name": "Flur"
+    },
+    "3": {
+        "id": "3",
+        "type": "switch",
+        "name": "Windfang"
+    },
+    "4": {
+        "id": "4",
+        "type": "switch",
+        "name": "Garten"
+    },
+    "5": {
+        "id": "5",
+        "type": "binary_sensor",
+        "name": "Schlafzimmer"
+    },
+    "6": {
+        "id": "6",
+        "type": "binary_sensor",
+        "name": "Wohnzimmer"
+    }
+}

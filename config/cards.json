@@ -1,0 +1,19 @@
+[
+    {
+        "title": "Licht",
+        "entities": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4"
+        ]
+    },
+    {
+        "title": "Heizung",
+        "entities": [
+            "5",
+            "6"
+        ]
+    }
+]
