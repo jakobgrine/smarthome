@@ -1,5 +1,6 @@
 const pins = require('./config/pins.json');
 const rpio = require('rpio');
+const { debounce } = require('./debounce');
 
 exports.setup = () => {
     rpio.init({mapping:'gpio'});
@@ -32,7 +33,7 @@ exports.onChange = callback => {
         if (typeof pin === 'undefined' || typeof pin.state_pin === 'undefined') {
             continue;
         }
-        rpio.poll(pin.state_pin, () => callback(id, !rpio.read(pin.state_pin)));
+        rpio.poll(pin.state_pin, debounce(() => callback(id, !rpio.read(pin.state_pin)), 100));
     }
 };
 
