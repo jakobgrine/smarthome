@@ -14,10 +14,7 @@ exports.setup = () => {
     }
 };
 
-let callback_; // temp as long as no real hardware
-
 exports.setState = (id, state) => {
-    console.log(`setting ${id} to ${state}`);
     const pin = pins[id];
     if (typeof pin !== 'undefined' && typeof pin.action_pin !== 'undefined') {
         rpio.write(pin.action_pin, rpio.LOW);
@@ -28,7 +25,6 @@ exports.setState = (id, state) => {
 };
 
 exports.onChange = callback => {
-    callback_ = callback; // temp as long as no real hardware
     for (const [id, pin] of Object.entries(pins)) {
         if (typeof pin === 'undefined' || typeof pin.state_pin === 'undefined') {
             continue;

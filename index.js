@@ -15,7 +15,7 @@ const httpServer = http.createServer(app);
 const webSocketServer = new WebSocket.Server({ server: httpServer });
 
 const entities = require('./config/entities');
-const states = {'5': true, '1': true};
+const states = {};
 
 webSocketServer.on('connection', ws => {
     const id = setInterval(() => {
@@ -31,15 +31,11 @@ webSocketServer.on('connection', ws => {
         if (event.event_type === 'state_request') {
             state.setState(event.data.id, event.data.state);
         }
-
-        console.log(event);
     });
 });
 
 state.setup();
 state.onChange((id, state) => {
-    console.log(`change ${id} to ${state}`);
-
     if (typeof entities[id] === 'undefined') {
         return;
     }
