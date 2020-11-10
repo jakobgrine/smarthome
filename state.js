@@ -8,7 +8,7 @@ exports.setup = () => {
             rpio.open(pin.state_pin, rpio.INPUT, rpio.PULL_UP);
         }
         if (typeof pin.action_pin !== 'undefined') {
-            rpio.open(pin.action_pin, rpio.OUTPUT, rpio.LOW);
+            rpio.open(pin.action_pin, rpio.OUTPUT, rpio.HIGH);
         }
     }
 };
@@ -19,11 +19,10 @@ exports.setState = (id, state) => {
     console.log(`setting ${id} to ${state}`);
     const pin = pins[id];
     if (typeof pin !== 'undefined' && typeof pin.action_pin !== 'undefined') {
-        rpio.write(pin.action_pin, rpio.HIGH);
+        rpio.write(pin.action_pin, rpio.LOW);
         setTimeout(() => {
-            rpio.write(pin.action_pin, rpio.LOW);
-        }, 500);
-        callback_(id, state);
+            rpio.write(pin.action_pin, rpio.HIGH);
+        }, 250);
     }
 };
 
@@ -33,7 +32,7 @@ exports.onChange = callback => {
         if (typeof pin === 'undefined' || typeof pin.state_pin === 'undefined') {
             continue;
         }
-        rpio.poll(pin.state_pin, () => callback(id, rpio.read(pin.state_pin)));
+        rpio.poll(pin.state_pin, () => callback(id, !rpio.read(pin.state_pin)));
     }
 };
 
