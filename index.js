@@ -57,7 +57,7 @@ state.setup((id, state) => {
 });
 
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public/'));
 
 const cards = require('./config/cards.json');
 for (const card of cards) {
