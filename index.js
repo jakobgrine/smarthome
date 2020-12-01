@@ -73,5 +73,5 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
 });
 
-httpServer.listen(3000);
+httpServer.listen(process.env.NODE_PORT || 3000);
 
