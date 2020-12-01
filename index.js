@@ -34,8 +34,7 @@ webSocketServer.on('connection', ws => {
     });
 });
 
-state.setup();
-state.onChange((id, state) => {
+state.setup((id, state) => {
     if (typeof entities[id] === 'undefined') {
         return;
     }
