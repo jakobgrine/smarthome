@@ -1,6 +1,4 @@
 body {
-    background: black;
-    color: white;
     font-family: sans-serif;
     margin: 16px;
 }
@@ -37,7 +35,7 @@ main {
 }
 
 .slider {
-    background: #333;
+    background: #ccc;
     cursor: pointer;
     transition: .4s;
     border-radius: 34px;
@@ -50,7 +48,7 @@ main {
 }
 
 .slider:before {
-    background: #111;
+    background: #fff;
     content: "";
     transition: .4s;
     border-radius: 50%;
@@ -71,7 +69,6 @@ input:checked + .slider:before {
 }
 
 .binary-sensor {
-    background: #333;
     border-radius: 100%;
     transition: .4s;
     transform: rotate(45deg);
@@ -82,12 +79,15 @@ input:checked + .slider:before {
     position: relative;
 }
 
+.binary-sensor:not(.checked) {
+    box-shadow: inset 0 0 0 3px #ccc;
+}
+
 .binary-sensor.checked {
     background: #6b6;
 }
 
 .binary-sensor:before {
-    background: black;
     content: "";
 
     width: 3px;
@@ -98,7 +98,6 @@ input:checked + .slider:before {
 }
 
 .binary-sensor:after {
-    background: black;
     content: "";
 
     width: 9px;
@@ -108,8 +107,13 @@ input:checked + .slider:before {
     left: 10px;
 }
 
+.binary-sensor.checked:before, .binary-sensor.checked:after {
+    background: #fff;
+}
+
 #disconnect-message {
-    background: #333;
+    background: #323232;
+    color: white;
     border-radius: 4px;
     padding: 16px;
 
