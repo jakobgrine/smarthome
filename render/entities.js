@@ -1,6 +1,6 @@
 (function(){function switch_(e
 ) {
-var out=' <label class="switch" for="'+(e.id)+'"> <input type="checkbox" id="'+(e.id)+'" ';if(e.state){out+='checked';}out+=' onclick="onSwitchToggle(this)"> <div class="slider"></div> </label>';return out;
+var out=' <div class="binary-sensor';if(e.state){out+=' checked';}out+='"></div> <img src="onoff.svg" id="'+(e.id)+'" class="toggle-button" onclick="onSwitchToggle(this)">';return out;
 }function binary_sensor(e
 ) {
 var out=' <div id="'+(e.id)+'" class="binary-sensor';if(e.state){out+=' checked';}out+='"></div>';return out;

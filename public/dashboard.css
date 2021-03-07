@@ -23,49 +23,16 @@ main {
     font-size: 20px;
 }
 
-.switch {
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    position: relative;
-}
-
-.switch input {
-    display: none;
-}
-
-.slider {
-    background: #ccc;
+.toggle-button {
     cursor: pointer;
-    transition: .4s;
-    border-radius: 34px;
 
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
+    border: none;
+    border-radius: 100%;
 
-.slider:before {
-    background: #fff;
-    content: "";
-    transition: .4s;
-    border-radius: 50%;
-
-    width: 26px;
-    height: 26px;
-    position: absolute;
-    bottom: 4px;
-    left: 4px;
-}
-
-input:checked + .slider {
-    background: #6b6;
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px);
+    width: 34px;
+    height: 34px;
+    margin-top: -4px;
+    margin-left: 16px;
 }
 
 .binary-sensor {
@@ -77,6 +44,7 @@ input:checked + .slider:before {
     width: 34px;
     height: 34px;
     position: relative;
+    margin-left: auto;
 }
 
 .binary-sensor:not(.checked) {

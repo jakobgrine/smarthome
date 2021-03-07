@@ -18,7 +18,7 @@ exports.setup = callback => {
     }
 };
 
-exports.setState = (id, state) => {
+exports.toggleState = id => {
     const pin = pins[id];
     if (typeof pin !== 'undefined' && typeof pin.action_pin !== 'undefined') {
         rpio.write(pin.action_pin, rpio.LOW);

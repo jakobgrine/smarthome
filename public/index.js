@@ -55,11 +55,10 @@ const connect = () => {
 const onSwitchToggle = element => {
     if (connected) {
         const message = {
-            event_type: 'state_request',
+            event_type: 'state_toggle',
             data: {
                 id: element.id,
-                type: 'switch',
-                state: element.checked
+                type: 'switch'
             }
         };
         const data = JSON.stringify(message);

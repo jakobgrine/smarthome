@@ -28,8 +28,8 @@ webSocketServer.on('connection', ws => {
 
     ws.on('message', msg => {
         const event = JSON.parse(msg);
-        if (event.event_type === 'state_request') {
-            state.setState(event.data.id, event.data.state);
+        if (event.event_type === 'state_toggle') {
+            state.toggleState(event.data.id);
         }
     });
 });
