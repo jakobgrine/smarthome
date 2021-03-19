@@ -1,27 +1,27 @@
 {
     "0": {
         "id": "0",
-        "type": "switch",
+        "type": "binary_sensor_button",
         "name": "Schlafzimmer"
     },
     "1": {
         "id": "1",
-        "type": "switch",
+        "type": "binary_sensor_button",
         "name": "Wohnzimmer"
     },
     "2": {
         "id": "2",
-        "type": "switch",
+        "type": "binary_sensor_button",
         "name": "Flur"
     },
     "3": {
         "id": "3",
-        "type": "switch",
+        "type": "binary_sensor_button",
         "name": "Windfang"
     },
     "4": {
         "id": "4",
-        "type": "switch",
+        "type": "binary_sensor_button",
         "name": "Garten"
     },
     "5": {

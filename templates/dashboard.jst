@@ -16,8 +16,8 @@
                 {{ e.state = it.states[e.id]; }}
                 <div class="entity">
                     <span>{{=e.name}}</span>
-                    {{? e.type === 'switch' }}
-                        {{#def.switch_:e}}
+                    {{? e.type === 'binary_sensor_button' }}
+                        {{#def.binary_sensor_button:e}}
                     {{?? e.type === 'binary_sensor' }}
                         {{#def.binary_sensor:e}}
                     {{?}}

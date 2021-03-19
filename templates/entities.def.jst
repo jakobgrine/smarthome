@@ -1,9 +1,9 @@
-{{##def.switch_:e:
-    <div class="binary-sensor{{? e.state}} checked{{?}}"></div>
-    <img src="onoff.svg" id="{{=e.id}}" class="toggle-button" onclick="onSwitchToggle(this)">
+{{##def.binary_sensor_button:e:
+    <div id="{{=e.id}}-state" class="binary-sensor{{? e.state}} checked{{?}}"></div>
+    <img src="onoff.svg" id="{{=e.id}}" class="toggle-button" onclick="onToggle(this)">
 #}}
 
 {{##def.binary_sensor:e:
-    <div id="{{=e.id}}" class="binary-sensor{{? e.state}} checked{{?}}"></div>
+    <div id="{{=e.id}}-state" class="binary-sensor{{? e.state}} checked{{?}}"></div>
 #}}
 

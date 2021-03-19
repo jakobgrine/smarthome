@@ -1,9 +1,9 @@
-(function(){function switch_(e
+(function(){function binary_sensor_button(e
 ) {
-var out=' <div class="binary-sensor';if(e.state){out+=' checked';}out+='"></div> <img src="onoff.svg" id="'+(e.id)+'" class="toggle-button" onclick="onSwitchToggle(this)">';return out;
+var out=' <div id="'+(e.id)+'-state" class="binary-sensor';if(e.state){out+=' checked';}out+='"></div> <img src="onoff.svg" id="'+(e.id)+'" class="toggle-button" onclick="onToggle(this)">';return out;
 }function binary_sensor(e
 ) {
-var out=' <div id="'+(e.id)+'" class="binary-sensor';if(e.state){out+=' checked';}out+='"></div>';return out;
+var out=' <div id="'+(e.id)+'-state" class="binary-sensor';if(e.state){out+=' checked';}out+='"></div>';return out;
 }function entities(it
 ) {
 var out='';return out;
@@ -13,4 +13,4 @@ var out='';return out;
 		return function(code) {
 			return code ? code.toString().replace(matchHTML, function(m) {return encodeHTMLRules[m] || m;}) : "";
 		};
-	}());itself.switch_=switch_;itself.binary_sensor=binary_sensor;if(typeof module!=='undefined' && module.exports) module.exports=itself;else if(typeof define==='function')define(function(){return itself;});else {__page.render=__page.render||{};__page.render['entities']=itself;}}());
+	}());itself.binary_sensor_button=binary_sensor_button;itself.binary_sensor=binary_sensor;if(typeof module!=='undefined' && module.exports) module.exports=itself;else if(typeof define==='function')define(function(){return itself;});else {__page.render=__page.render||{};__page.render['entities']=itself;}}());

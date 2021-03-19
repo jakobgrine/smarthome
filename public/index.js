@@ -14,18 +14,11 @@ const connect = () => {
 
         const message = JSON.parse(event.data);
         if (message.event_type === 'state_changed') {
-            const element = document.getElementById(message.data.id);
-            switch (message.data.type) {
-                case 'switch':
-                    element.checked = message.data.state;
-                    break;
-                case 'binary_sensor':
-                    if (message.data.state) {
-                        element.classList.add('checked');
-                    } else {
-                        element.classList.remove('checked');
-                    }
-                    break;
+            const element = document.getElementById(message.data.id + "-state");
+            if (message.data.state) {
+                element.classList.add('checked');
+            } else {
+                element.classList.remove('checked');
             }
         }
     };
@@ -52,13 +45,13 @@ const connect = () => {
     };
 };
 
-const onSwitchToggle = element => {
+const onToggle = element => {
     if (connected) {
         const message = {
             event_type: 'state_toggle',
             data: {
                 id: element.id,
-                type: 'switch'
+                type: 'binary_sensor_button'
             }
         };
         const data = JSON.stringify(message);
