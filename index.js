@@ -5,7 +5,7 @@ require('dot').process({
 });
 
 const render = require('./render');
-const state = require('./state');
+const state = require('./gpio');
 const WebSocket = require('ws');
 const http = require('http');
 const express = require('express');
