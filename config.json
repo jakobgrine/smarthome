@@ -1,0 +1,95 @@
+{
+    "entities": {
+        "licht_schlafzimmer": {
+            "id": "licht_schlafzimmer",
+            "type": "binary_sensor_button",
+            "name": "Schlafzimmer",
+            "long_name": "Licht Schlafzimmer",
+            "state_pin": 23,
+            "action_pin": 5
+        },
+        "licht_wohnzimmer": {
+            "id": "licht_wohnzimmer",
+            "type": "binary_sensor_button",
+            "name": "Wohnzimmer",
+            "long_name": "Licht Wohnzimmer",
+            "state_pin": 24,
+            "action_pin": 6
+        },
+        "licht_kueche": {
+            "id": "licht_kueche",
+            "type": "binary_sensor_button",
+            "name": "Küche",
+            "long_name": "Licht Küche",
+            "state_pin": -1,
+            "action_pin": -1
+        },
+        "licht_flur": {
+            "id": "licht_flur",
+            "type": "binary_sensor_button",
+            "name": "Flur",
+            "long_name": "Licht Flur",
+            "state_pin": 25,
+            "action_pin": 13
+        },
+        "licht_windfang": {
+            "id": "licht_windfang",
+            "type": "binary_sensor_button",
+            "name": "Windfang",
+            "long_name": "Licht Windfang",
+            "state_pin": 10,
+            "action_pin": 16
+        },
+        "licht_garten": {
+            "id": "licht_garten",
+            "type": "binary_sensor_button",
+            "name": "Garten",
+            "long_name": "Licht Garten",
+            "state_pin": 9,
+            "action_pin": 19
+        },
+        "heizung_schlafzimmer": {
+            "id": "heizung_schlafzimmer",
+            "type": "binary_sensor",
+            "name": "Schlafzimmer",
+            "long_name": "Heizung Schlafzimmer",
+            "state_pin": 8
+        },
+        "heizung_wohnzimmer": {
+            "id": "heizung_wohnzimmer",
+            "type": "binary_sensor",
+            "name": "Wohnzimmer",
+            "long_name": "Heizung Wohnzimmer",
+            "state_pin": 11
+        },
+        "heizung_kueche": {
+            "id": "heizung_kueche",
+            "type": "binary_sensor_button",
+            "name": "Küche",
+            "long_name": "Heizung Küche",
+            "state_pin": -1,
+            "action_pin": -1
+        }
+    },
+    "cards": [
+        {
+            "title": "Licht",
+            "entities": [
+                "licht_schlafzimmer",
+                "licht_wohnzimmer",
+                "licht_kueche",
+                "licht_flur",
+                "licht_windfang",
+                "licht_garten"
+            ]
+        },
+        {
+            "title": "Heizung",
+            "entities": [
+                "heizung_schlafzimmer",
+                "heizung_wohnzimmer",
+                "heizung_kueche"
+            ]
+        }
+    ]
+}
