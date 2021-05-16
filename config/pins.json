@@ -24,5 +24,12 @@
     },
     "6": {
         "state_pin": 11
+    },
+    "7": {
+        "state_pin": -1
+    },
+    "8": {
+        "state_pin": -1,
+        "action_pin": -1
     }
 }

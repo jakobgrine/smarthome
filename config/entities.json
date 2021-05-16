@@ -33,5 +33,15 @@
         "id": "6",
         "type": "binary_sensor",
         "name": "Wohnzimmer"
+    },
+    "7": {
+        "id": "7",
+        "type": "binary_sensor",
+        "name": "Küche"
+    },
+    "8": {
+        "id": "8",
+        "type": "binary_sensor_button",
+        "name": "Küche"
     }
 }
