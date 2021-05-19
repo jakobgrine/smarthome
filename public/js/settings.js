@@ -78,6 +78,9 @@ const addTimer = (data) => {
 
         timerCard.setAttribute('id', data.id);
 
+        const enabledInput = timerCard.querySelector('input[type="checkbox"]');
+        enabledInput.checked = data.enabled;
+
         const timeInput = timerCard.querySelector('input[type="time"]');
         timeInput.value = data.time;
 
@@ -108,6 +111,7 @@ const removeTimer = (element, doNotSend) => {
 
 const saveTimer = (element) => {
     if (connected) {
+        const enabledInput = element.querySelector('input[type="checkbox"]');
         const timeInput = element.querySelector('input[type="time"]');
         const entityInput = element.querySelector('select.entity-input');
         const actionInput = element.querySelector('select.action-input');
@@ -116,6 +120,7 @@ const saveTimer = (element) => {
             event_type: 'timer_update',
             data: {
                 id: element.id,
+                enabled: enabledInput.checked,
                 time: timeInput.value,
                 entity_id: entityInput.value,
                 action: actionInput.value,

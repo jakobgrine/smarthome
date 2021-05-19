@@ -67,11 +67,15 @@ const cronHandler = id => () => {
 
 const addTimer = timer => {
     const cron = timeToCron(timer.time);
-    if (cronTimers[timer.id]) {
+
+    try {
         scheduler.unregisterTask(cronTimers[timer.id]);
+    } catch {}
+
+    if (timer.enabled) {
+        const taskId = scheduler.registerTask(cron, cronHandler(timer.id));
+        cronTimers[timer.id] = taskId;
     }
-    const taskId = scheduler.registerTask(cron, cronHandler(timer.id));
-    cronTimers[timer.id] = taskId;
 };
 
 for (const id in timers) {
@@ -80,7 +84,9 @@ for (const id in timers) {
 }
 
 const removeTimer = id => {
-    scheduler.unregisterTask(cronTimers[id]);
+    try {
+        scheduler.unregisterTask(cronTimers[id]);
+    } catch {}
 };
 
 const saveTimers = () => {

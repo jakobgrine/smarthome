@@ -2,8 +2,24 @@
     id="{% if timer %}{{ timer.id }}{% else %}add-timer-template{% endif %}"
     {% if timer %}{% else %} hidden {% endif %}>
     <div class="row">
+        <label>Aktiviert</label>
+        <label class="switch">
+            <input type="checkbox" class="enabled-input"
+                onchange="saveTimer(this.parentNode.parentNode.parentNode)"
+                {% if timer %}
+                    {% if timer.enabled %}
+                        checked
+                    {% endif %}
+                {% else %}
+                    checked
+                {% endif %}>
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="row">
         <label>Zeit</label>
-        <input type="time" class="time-input" value="{% if timer %}{{ timer.time }}{% else %}00:00{% endif %}">
+        <input type="time" class="time-input"
+            value="{% if timer %}{{ timer.time }}{% else %}00:00{% endif %}">
     </div>
     <div class="row">
         <label>Entität</label>
