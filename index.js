@@ -1,9 +1,4 @@
-const express = require('express');
-const http = require('http');
-const WebSocket = require('ws');
-const { Liquid } = require('liquidjs');
 const path = require('path');
-const fs = require('fs');
 
 const { GpioModule, IkeaTradfriModule } = require('./modules');
 
@@ -13,8 +8,13 @@ config.cards.forEach(
         card.entities = card.entities.map(x => config.entities[x])
 );
 
+const express = require('express');
 const app = express();
+
+const http = require('http');
 const httpServer = http.createServer(app);
+
+const WebSocket = require('ws');
 const webSocketServer = new WebSocket.Server({ server: httpServer });
 
 const broadcast = message => {
@@ -117,9 +117,11 @@ webSocketServer.on('connection', ws => {
     });
 });
 
+const { Liquid } = require('liquidjs');
 const liquid = new Liquid({
     root: path.resolve(__dirname, 'templates/'),
     extname: '.tpl',
+    jsTruthy: true,
     globals: {
         ...config,
         states,
