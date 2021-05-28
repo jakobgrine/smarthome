@@ -6,7 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const { IntervalBasedCronScheduler, parseCronExpression } = require('cron-schedule');
 
-const { GpioModule } = require('./modules');
+const { GpioModule, IkeaTradfriModule } = require('./modules');
 
 const config = require('./config.json');
 for (const card of config.cards) {
@@ -29,6 +29,21 @@ const broadcast = message => {
 const states = {};
 
 const modules = {
+    tradfri: new IkeaTradfriModule(device => {
+        const entity = Object.values(config.entities)
+            .find(entity => entity['tradfri_id'] == device.instanceId);
+        if (typeof entity === 'undefined')
+            return;
+
+        states[entity.id] = device.lightList[0].onOff;
+        broadcast({
+            event_type: 'state_changed',
+            data: {
+                id: entity.id,
+                state: device.lightList[0].onOff,
+            },
+        });
+    }),
     gpio: new GpioModule((id, state) => {
         const entity = config.entities[id];
         if (typeof entity === 'undefined') {
