@@ -30,7 +30,7 @@
         },
         "licht_schlafzimmer": {
             "id": "licht_schlafzimmer",
-            "type": "binary_sensor_button",
+            "type": "gpio_impulse_relay",
             "name": "Schlafzimmer",
             "long_name": "Licht Schlafzimmer",
             "state_pin": 23,
@@ -40,7 +40,7 @@
         },
         "licht_wohnzimmer": {
             "id": "licht_wohnzimmer",
-            "type": "binary_sensor_button",
+            "type": "gpio_impulse_relay",
             "name": "Wohnzimmer",
             "long_name": "Licht Wohnzimmer",
             "state_pin": 24,
@@ -50,7 +50,7 @@
         },
         "licht_kueche": {
             "id": "licht_kueche",
-            "type": "binary_sensor_button",
+            "type": "gpio_impulse_relay",
             "name": "Küche",
             "long_name": "Licht Küche",
             "state_pin": -1,
@@ -60,7 +60,7 @@
         },
         "licht_flur": {
             "id": "licht_flur",
-            "type": "binary_sensor_button",
+            "type": "gpio_impulse_relay",
             "name": "Flur",
             "long_name": "Licht Flur",
             "state_pin": 25,
@@ -70,7 +70,7 @@
         },
         "licht_windfang": {
             "id": "licht_windfang",
-            "type": "binary_sensor_button",
+            "type": "gpio_impulse_relay",
             "name": "Windfang",
             "long_name": "Licht Windfang",
             "state_pin": 10,
@@ -80,7 +80,7 @@
         },
         "licht_garten": {
             "id": "licht_garten",
-            "type": "binary_sensor_button",
+            "type": "gpio_impulse_relay",
             "name": "Garten",
             "long_name": "Licht Garten",
             "state_pin": 9,
@@ -90,7 +90,7 @@
         },
         "heizung_schlafzimmer": {
             "id": "heizung_schlafzimmer",
-            "type": "binary_sensor",
+            "type": "gpio_binary_sensor",
             "name": "Schlafzimmer",
             "long_name": "Heizung Schlafzimmer",
             "state_pin": 8,
@@ -99,7 +99,7 @@
         },
         "heizung_wohnzimmer": {
             "id": "heizung_wohnzimmer",
-            "type": "binary_sensor",
+            "type": "gpio_binary_sensor",
             "name": "Wohnzimmer",
             "long_name": "Heizung Wohnzimmer",
             "state_pin": 11,
@@ -108,13 +108,13 @@
         },
         "heizung_kueche": {
             "id": "heizung_kueche",
-            "type": "binary_sensor_button",
+            "type": "gpio_impulse_relay",
             "name": "Küche",
             "long_name": "Heizung Küche",
-            "state_pin": -1,
-            "action_pin": -1,
+            "state_pin": 22,
+            "action_pin": 26,
             "state_active_low": true,
-            "action_active_low": true
+            "action_active_low": false
         }
     },
     "cards": [

@@ -17,10 +17,8 @@ const debounce = (func, delay) => {
 
 class GpioModule {
     entityTypes = [
-        // 'gpio_binary_sensor',
-        'binary_sensor',
-        // 'gpio_impulse_relay',
-        'binary_sensor_button',
+        'gpio_binary_sensor',
+        'gpio_impulse_relay',
     ];
 
     #initialized = false;
