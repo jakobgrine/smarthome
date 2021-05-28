@@ -34,7 +34,9 @@
             "name": "Schlafzimmer",
             "long_name": "Licht Schlafzimmer",
             "state_pin": 23,
-            "action_pin": 5
+            "action_pin": 5,
+            "state_active_low": true,
+            "action_active_low": true
         },
         "licht_wohnzimmer": {
             "id": "licht_wohnzimmer",
@@ -42,7 +44,9 @@
             "name": "Wohnzimmer",
             "long_name": "Licht Wohnzimmer",
             "state_pin": 24,
-            "action_pin": 6
+            "action_pin": 6,
+            "state_active_low": true,
+            "action_active_low": true
         },
         "licht_kueche": {
             "id": "licht_kueche",
@@ -50,7 +54,9 @@
             "name": "Küche",
             "long_name": "Licht Küche",
             "state_pin": -1,
-            "action_pin": -1
+            "action_pin": -1,
+            "state_active_low": true,
+            "action_active_low": true
         },
         "licht_flur": {
             "id": "licht_flur",
@@ -58,7 +64,9 @@
             "name": "Flur",
             "long_name": "Licht Flur",
             "state_pin": 25,
-            "action_pin": 13
+            "action_pin": 13,
+            "state_active_low": true,
+            "action_active_low": true
         },
         "licht_windfang": {
             "id": "licht_windfang",
@@ -66,7 +74,9 @@
             "name": "Windfang",
             "long_name": "Licht Windfang",
             "state_pin": 10,
-            "action_pin": 16
+            "action_pin": 16,
+            "state_active_low": true,
+            "action_active_low": true
         },
         "licht_garten": {
             "id": "licht_garten",
@@ -74,21 +84,27 @@
             "name": "Garten",
             "long_name": "Licht Garten",
             "state_pin": 9,
-            "action_pin": 19
+            "action_pin": 19,
+            "state_active_low": true,
+            "action_active_low": true
         },
         "heizung_schlafzimmer": {
             "id": "heizung_schlafzimmer",
             "type": "binary_sensor",
             "name": "Schlafzimmer",
             "long_name": "Heizung Schlafzimmer",
-            "state_pin": 8
+            "state_pin": 8,
+            "state_active_low": true,
+            "action_active_low": true
         },
         "heizung_wohnzimmer": {
             "id": "heizung_wohnzimmer",
             "type": "binary_sensor",
             "name": "Wohnzimmer",
             "long_name": "Heizung Wohnzimmer",
-            "state_pin": 11
+            "state_pin": 11,
+            "state_active_low": true,
+            "action_active_low": true
         },
         "heizung_kueche": {
             "id": "heizung_kueche",
@@ -96,7 +112,9 @@
             "name": "Küche",
             "long_name": "Heizung Küche",
             "state_pin": -1,
-            "action_pin": -1
+            "action_pin": -1,
+            "state_active_low": true,
+            "action_active_low": true
         }
     },
     "cards": [
