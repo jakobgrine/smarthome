@@ -4,7 +4,6 @@ const WebSocket = require('ws');
 const { Liquid } = require('liquidjs');
 const path = require('path');
 const fs = require('fs');
-const { IntervalBasedCronScheduler, parseCronExpression } = require('cron-schedule');
 
 const { GpioModule, IkeaTradfriModule } = require('./modules');
 
@@ -69,20 +68,8 @@ Object.values(config.entities).forEach(
             .initEntity(entity.id)
 );
 
-const timeToCron = time => {
-    const [hour, minute] = time.split(':');
-    return parseCronExpression(`${minute} ${hour} * * *`);
-};
-
-const timers = require('./timers.json');
-const cronTimers = {};
-const scheduler = new IntervalBasedCronScheduler(10*1000);
-
-const cronHandler = id => () => {
-    const timer = timers[id];
-    if (typeof timer === 'undefined')
-        return;
-
+const { CronScheduler } = require('./cron.js');
+const scheduler = new CronScheduler(timer => {
     const entity = config.entities[timer['entity_id']];
     if (typeof entity === 'undefined')
         return;
@@ -95,40 +82,7 @@ const cronHandler = id => () => {
         return;
 
     module.setEntityState(entity.id, state);
-};
-
-const addTimer = timer => {
-    const cron = timeToCron(timer.time);
-
-    try {
-        scheduler.unregisterTask(cronTimers[timer.id]);
-    } catch {}
-
-    if (timer.enabled) {
-        const taskId = scheduler.registerTask(cron, cronHandler(timer.id));
-        cronTimers[timer.id] = taskId;
-    }
-};
-
-for (const id in timers) {
-    const timer = timers[id];
-    addTimer(timer);
-}
-
-const removeTimer = id => {
-    try {
-        scheduler.unregisterTask(cronTimers[id]);
-    } catch {}
-};
-
-const saveTimers = () => {
-    const json = JSON.stringify(timers, null, 4);
-    fs.writeFile('timers.json', json, err => {
-        if (err) {
-            throw err;
-        }
-    });
-};
+});
 
 webSocketServer.on('connection', ws => {
     const pingIntervalId = setInterval(() => ws.send('ping'), 2000);
@@ -146,18 +100,14 @@ webSocketServer.on('connection', ws => {
                     module.toggleEntityState(event.data.id);
                 break;
             case 'timer_update':
-                timers[event.data.id] = event.data;
-                addTimer(event.data);
-                saveTimers();
+                scheduler.addTimer(event.data);
                 broadcast({
                     event_type: 'timer_updated',
                     data: event.data,
                 });
                 break;
             case 'timer_remove':
-                delete timers[event.data.id];
-                removeTimer(event.data.id);
-                saveTimers();
+                scheduler.removeTimer(event.data.id);
                 broadcast({
                     event_type: 'timer_removed',
                     data: event.data,
@@ -173,7 +123,7 @@ const liquid = new Liquid({
     globals: {
         ...config,
         states,
-        timers,
+        timers: scheduler.timers,
     },
 });
 liquid.registerFilter('flatten', o => Object.values(o));
