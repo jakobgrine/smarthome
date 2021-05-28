@@ -9,9 +9,10 @@ const { IntervalBasedCronScheduler, parseCronExpression } = require('cron-schedu
 const { GpioModule, IkeaTradfriModule } = require('./modules');
 
 const config = require('./config.json');
-for (const card of config.cards) {
-    card.entities = card.entities.map(x => config.entities[x]);
-}
+config.cards.forEach(
+    card =>
+        card.entities = card.entities.map(x => config.entities[x])
+);
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -130,13 +131,9 @@ const saveTimers = () => {
 };
 
 webSocketServer.on('connection', ws => {
-    const id = setInterval(() => {
-        ws.send('ping');
-    }, 2000);
+    const pingIntervalId = setInterval(() => ws.send('ping'), 2000);
 
-    ws.on('close', () => {
-        clearInterval(id);
-    });
+    ws.on('close', () => clearInterval(pingIntervalId));
 
     ws.on('message', msg => {
         const event = JSON.parse(msg);
