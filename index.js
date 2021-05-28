@@ -5,7 +5,8 @@ const { Liquid } = require('liquidjs');
 const path = require('path');
 const fs = require('fs');
 const { IntervalBasedCronScheduler, parseCronExpression } = require('cron-schedule');
-const gpio = require('./gpio');
+
+const { GpioModule } = require('./modules');
 
 const config = require('./config.json');
 for (const card of config.cards) {
@@ -27,22 +28,30 @@ const broadcast = message => {
 
 const states = {};
 
-const gpioHandler = (id, state) => {
-    const entity = config.entities[id];
-    if (typeof entity === 'undefined') {
-        return;
-    }
+const modules = {
+    gpio: new GpioModule((id, state) => {
+        const entity = config.entities[id];
+        if (typeof entity === 'undefined') {
+            return;
+        }
 
-    states[id] = state;
-    broadcast({
-        event_type: 'state_changed',
-        data: {
-            id: id,
-            state: state,
-        },
-    });
+        states[id] = state;
+        broadcast({
+            event_type: 'state_changed',
+            data: {
+                id: id,
+                state: state,
+            },
+        });
+    }),
 };
-gpio.setup(gpioHandler);
+
+Object.values(config.entities).forEach(
+    entity =>
+        Object.values(modules)
+            .find(m => m.entityTypes.includes(entity.type))
+            .initEntity(entity.id)
+);
 
 const timeToCron = time => {
     const [hour, minute] = time.split(':');
@@ -55,14 +64,21 @@ const scheduler = new IntervalBasedCronScheduler(10*1000);
 
 const cronHandler = id => () => {
     const timer = timers[id];
-    switch (timer.action) {
-        case 'turn_on':
-            break;
-            gpio.setState(timer.entity_id, true);
-        case 'turn_off':
-            gpio.setState(timer.entity_id, false);
-            break;
-    }
+    if (typeof timer === 'undefined')
+        return;
+
+    const entity = config.entities[timer['entity_id']];
+    if (typeof entity === 'undefined')
+        return;
+
+    const state = timer.action === 'turn_on';
+
+    const module = Object.values(modules)
+        .find(m => m.entityTypes.includes(entity.type));
+    if (typeof module === 'undefined')
+        return;
+
+    module.setEntityState(entity.id, state);
 };
 
 const addTimer = timer => {
@@ -111,7 +127,11 @@ webSocketServer.on('connection', ws => {
         const event = JSON.parse(msg);
         switch (event.event_type) {
             case 'state_toggle':
-                gpio.toggleState(event.data.id);
+                const entityType = config.entities[event.data.id].type;
+                const module = Object.values(modules)
+                    .find(m => m.entityTypes.includes(entityType));
+                if (typeof module !== 'undefined')
+                    module.toggleEntityState(event.data.id);
                 break;
             case 'timer_update':
                 timers[event.data.id] = event.data;
