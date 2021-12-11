@@ -13,13 +13,17 @@ const connect = () => {
         }
 
         const message = JSON.parse(event.data);
-        if (message.event_type === 'state_changed') {
-            const element = document.getElementById(message.data.id + "-state");
-            if (message.data.state) {
-                element.classList.add('checked');
-            } else {
-                element.classList.remove('checked');
-            }
+        switch (message.event_type) {
+            case 'state_changed':
+                const elements = document.querySelectorAll('#' + message.data.id + '-state');
+                for (const element of elements) {
+                    if (message.data.state) {
+                        element.classList.add('checked');
+                    } else {
+                        element.classList.remove('checked');
+                    }
+                }
+                break;
         }
     };
 
@@ -45,19 +49,18 @@ const connect = () => {
     };
 };
 
+connect();
+
 const onToggle = element => {
     if (connected) {
         const message = {
             event_type: 'state_toggle',
             data: {
                 id: element.id,
-                type: 'binary_sensor_button'
-            }
+            },
         };
         const data = JSON.stringify(message);
         ws.send(data);
     }
 };
-
-connect();
 

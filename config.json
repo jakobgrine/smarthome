@@ -1,0 +1,157 @@
+{
+    "entities": {
+        "tradfri_bettlampe1": {
+            "id": "tradfri_bettlampe1",
+            "type": "tradfri_light",
+            "name": "Bettlampe 1",
+            "long_name": "Bettlampe 1",
+            "tradfri_id": "65621"
+        },
+        "tradfri_bettlampe2": {
+            "id": "tradfri_bettlampe2",
+            "type": "tradfri_light",
+            "name": "Bettlampe 2",
+            "long_name": "Bettlampe 2",
+            "tradfri_id": "65622"
+        },
+        "tradfri_bettlampe3": {
+            "id": "tradfri_bettlampe3",
+            "type": "tradfri_light",
+            "name": "Bettlampe 3",
+            "long_name": "Bettlampe 3",
+            "tradfri_id": "65623"
+        },
+        "tradfri_deckenlampe": {
+            "id": "tradfri_deckenlampe",
+            "type": "tradfri_light",
+            "name": "Deckenlampe",
+            "long_name": "Deckenlampe",
+            "tradfri_id": "65625"
+        },
+        "licht_schlafzimmer": {
+            "id": "licht_schlafzimmer",
+            "type": "gpio_impulse_relay",
+            "name": "Schlafzimmer",
+            "long_name": "Licht Schlafzimmer",
+            "state_pin": 23,
+            "action_pin": 5,
+            "state_active_low": true,
+            "action_active_low": true
+        },
+        "licht_wohnzimmer": {
+            "id": "licht_wohnzimmer",
+            "type": "gpio_impulse_relay",
+            "name": "Wohnzimmer",
+            "long_name": "Licht Wohnzimmer",
+            "state_pin": 24,
+            "action_pin": 6,
+            "state_active_low": true,
+            "action_active_low": true
+        },
+        "licht_kueche": {
+            "id": "licht_kueche",
+            "type": "gpio_impulse_relay",
+            "name": "Küche",
+            "long_name": "Licht Küche",
+            "state_pin": -1,
+            "action_pin": -1,
+            "state_active_low": true,
+            "action_active_low": true
+        },
+        "licht_flur": {
+            "id": "licht_flur",
+            "type": "gpio_impulse_relay",
+            "name": "Flur",
+            "long_name": "Licht Flur",
+            "state_pin": 25,
+            "action_pin": 13,
+            "state_active_low": true,
+            "action_active_low": true
+        },
+        "licht_windfang": {
+            "id": "licht_windfang",
+            "type": "gpio_impulse_relay",
+            "name": "Windfang",
+            "long_name": "Licht Windfang",
+            "state_pin": 10,
+            "action_pin": 16,
+            "state_active_low": true,
+            "action_active_low": true
+        },
+        "licht_garten": {
+            "id": "licht_garten",
+            "type": "gpio_impulse_relay",
+            "name": "Garten",
+            "long_name": "Licht Garten",
+            "state_pin": 9,
+            "action_pin": 19,
+            "state_active_low": true,
+            "action_active_low": true
+        },
+        "heizung_schlafzimmer": {
+            "id": "heizung_schlafzimmer",
+            "type": "gpio_binary_sensor",
+            "name": "Schlafzimmer",
+            "long_name": "Heizung Schlafzimmer",
+            "state_pin": 8,
+            "state_active_low": true,
+            "action_active_low": true
+        },
+        "heizung_wohnzimmer": {
+            "id": "heizung_wohnzimmer",
+            "type": "gpio_binary_sensor",
+            "name": "Wohnzimmer",
+            "long_name": "Heizung Wohnzimmer",
+            "state_pin": 11,
+            "state_active_low": true,
+            "action_active_low": true
+        },
+        "heizung_kueche": {
+            "id": "heizung_kueche",
+            "type": "gpio_impulse_relay",
+            "name": "Küche",
+            "long_name": "Heizung Küche",
+            "state_pin": 22,
+            "action_pin": 26,
+            "state_active_low": true,
+            "action_active_low": false
+        }
+    },
+    "cards": [
+        {
+            "title": "Tradfri",
+            "entities": [
+                "tradfri_bettlampe1",
+                "tradfri_bettlampe2",
+                "tradfri_bettlampe3",
+                "tradfri_deckenlampe"
+            ]
+        },
+        {
+            "title": "Licht",
+            "entities": [
+                "licht_schlafzimmer",
+                "licht_wohnzimmer",
+                "licht_kueche",
+                "licht_flur",
+                "licht_windfang",
+                "licht_garten"
+            ]
+        },
+        {
+            "title": "Heizung",
+            "entities": [
+                "heizung_schlafzimmer",
+                "heizung_wohnzimmer",
+                "heizung_kueche"
+            ]
+        }
+    ],
+    "tradfri": {
+        "hostname": "gw-d44da43be6f1",
+        "auth": {
+            "identity": "tradfri_1621530811815",
+            "psk": "ih5JYN4owPZB1vpf"
+        }
+    }
+}

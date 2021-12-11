@@ -1,0 +1,254 @@
+body {
+    font-family: sans-serif;
+    margin: 16px;
+}
+
+header {
+    max-width: 500px;
+    height: 36px;
+    margin: auto;
+    font-size: 1.5em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+header a {
+    height: 100%;
+    margin-right: 16px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header a:last-child {
+    margin: 0 0 0 auto;
+}
+
+img.icon{
+    height: 1.5em;
+}
+
+header img.icon {
+    height: 1.3em;
+}
+
+main {
+    max-width: 500px;
+    margin: auto;
+}
+
+.card {
+    font-size: 1.2em;
+
+    padding: 0 16px;
+    margin-top: 16px;
+
+    border-radius: 8px;
+    border: 1px solid grey;
+}
+
+#add-timer-card {
+    padding: 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+*[onclick] {
+    cursor: pointer;
+}
+
+select, input {
+    padding: 4px;
+
+    appearance: auto;
+    background: white;
+    border: 1px solid grey;
+    border-radius: 4px;
+}
+
+.time-input {
+    padding: 4px;
+
+    font-family: monospace;
+}
+
+.row {
+    margin: 16px 0;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.row.right {
+    justify-content: flex-end;
+}
+
+.row :not(:first-child) {
+    margin-left: 8px;
+}
+
+.row:not(.right) :last-child {
+    margin-left: auto;
+}
+
+.saved-indicator {
+    font-size: .7em;
+    color: grey;
+
+    opacity: 0;
+    transition: all 100ms;
+}
+
+.saved-indicator.show {
+    opacity: 1;
+}
+
+.entity {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 8px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-button {
+    cursor: pointer;
+
+    border: none;
+    border-radius: 100%;
+
+    width: 34px;
+    height: 34px;
+    margin-left: 16px;
+}
+
+.binary-sensor {
+    border-radius: 100%;
+    transition: .4s;
+    transform: rotate(45deg);
+
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    position: relative;
+    margin-left: auto;
+}
+
+.binary-sensor:not(.checked) {
+    box-shadow: inset 0 0 0 .2em #000;
+}
+
+.binary-sensor.checked {
+    background: #6b6;
+}
+
+.binary-sensor:before {
+    content: "";
+
+    width: 3px;
+    height: 22px;
+    position: absolute;
+    top: 4px;
+    left: 19px;
+}
+
+.binary-sensor:after {
+    content: "";
+
+    width: 9px;
+    height: 3px;
+    position: absolute;
+    top: 23px;
+    left: 10px;
+}
+
+.binary-sensor.checked:before, .binary-sensor.checked:after {
+    background: #fff;
+}
+
+.switch {
+    width: 56px;
+    height: 30px;
+
+    position: relative;
+    display: inline-block;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    /* replace with display: none ? */
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    cursor: pointer;
+    background: #ccc;
+    border-radius: 30px;
+
+    transition: .4s;
+}
+
+.slider:before {
+    content: "";
+
+    width: 22px;
+    height: 22px;
+
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+
+    background: white;
+    border-radius: 50%;
+
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background: #6b6;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+#disconnect-message {
+    background: #323232;
+    color: white;
+    border-radius: 4px;
+    padding: 16px;
+
+    width: calc(100% - 48px);
+    max-width: 400px;
+    display: none;
+    position: fixed;
+    left: 8px;
+    bottom: 8px;
+}
+
+#disconnect-message.show {
+    display: block;
+}
+
